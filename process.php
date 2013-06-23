@@ -32,6 +32,8 @@
 	if ($client->getAccessToken()) {
 		echo "bah";
 		die();
+	/*$calList = $cal->calendarList->listCalendarList();
+	  print "<h1>Calendar List</h1><pre>" . print_r($calList, true) . "</pre>";*/
 	  // Creating the google_Event
 	  $createdEvent = $cal->events->insert('primary', $google_event);
 
