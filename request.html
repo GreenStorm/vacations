@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Request a Vacation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="all" href="../assets/css/daterangepicker.css" />
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      .control-group .help-inline{
+        display: none;
+      }
+      .control-group.error .help-inline{
+        display: inline-block;
+      }
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="index.html">Vacations</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#register">Register</a></li>
+              <li class="active" ><a href="#">Request Vacation</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 class="text-center">Request a Vacation!!</h1>
+      </div>
+      <div class= "well">
+        <!-- <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet est eu dui sollicitudin dictum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse tempus velit dui, id dignissim enim faucibus ac. Duis auctor mattis turpis vitae ultricies. In hac habitasse platea dictumst. Mauris consequat faucibus purus. In eget metus a nunc convallis tincidunt condimentum viverra ligula. Nunc eget tortor ac mi molestie accumsan. </p> -->
+        <form class="form-horizontal" id="vacForm" name="vacForm">
+          <fieldset> 
+
+          <!-- Form Name -->
+          <legend>Request a Vacation Form</legend>
+          
+
+          <!-- Name input-->
+          <div class="control-group">
+            <label class="control-label">Employee Name</label>
+            <div class="controls">
+              <input id="empName" name="empName" type="text" placeholder="Your Name" class="input-span8" >
+              <span class="help-inline">Please enter your name!</span>
+            </div>
+          </div>
+
+          <!-- Select Department -->
+          <!-- Each department resembles a different Google calendar -->
+          <div class="control-group">
+            <label class="control-label">Department</label>
+            <div class="controls">
+              <select id="Dept" name="Dept" class="input-span6">
+                <option>E-Commerce Sea</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Vacation Type -->
+          <div class="control-group">
+            <label class="control-label">Vacation Type</label>
+            <div class="controls">
+              <select id="vacType" name="vacType" class="input">
+                <option></option>
+                <option>In sick</option>
+                <option>Paid</option>
+                <option>Unpaid</option>
+              </select>
+              <span class="help-inline">Please select your vacation type!</span>
+            </div>
+          </div>
+
+          <!-- Calendar -->
+          <div class="control-group">
+            <label class="control-label" for="vacDates">Vacation dates:</label>
+            <div class="controls">
+             <div class="input-append">
+               <input type="text" name="vacDates" id="vacDates" value=""/>
+               <button class="btn cleandar-button" type="button"><i class="icon-calendar"></i></button>
+             </div>
+             <span class="help-inline">Please specify your vacation dates!</span>
+            </div>
+          </div>
+                 
+          <!-- Vacation Details Text Area -->
+          <div class="control-group">
+            <label class="control-label">Vacation Details</label>
+            <div class="controls">                     
+              <textarea id="vacDetails" name="vacDetails" placeholder= "I want to request a vacation because"></textarea>
+              <span class="help-inline">Please specify the vacation details your vacation!</span>
+            </div>
+          </div>
+          <!--  Submit and Resest Buttons-->
+          <div class="control-group">
+            <label class="control-label"></label>
+            <div class="controls">
+              <button id="ResetBtn" name="ResetBtn" class="btn btn-danger reset-button" type="button">Reset All</button>
+              <button id="SubmitBtn" name="SubmitBtn" class="btn btn-success submit-button">Submit</button>
+            </div>
+          </div>
+
+          </fieldset>
+          </form>
+
+      </div>
+      <div class="well formResult" id = "results"></div>
+    </div>
+    <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+    <!-- Form Validation and submission -->
+    <script type="text/javascript">
+      var errors= ["empName", "vacType", "vacDates", "vacDetails"] ;
+      $('#vacForm').submit(function(e){
+        e.preventDefault();
+        if(errors.length > 0){
+          $.each(errors, function(index, field){
+            $('[name="'+field+'"]').parents('.control-group').addClass('error');
+          });
+        }
+        else{ // submit 
+          $.ajax({
+            url: 'process.php',
+            type: 'post',
+            async:false,
+            //dataType: 'json',
+            data: $('#vacForm').serialize(),
+            beforeSend:function(){
+            },
+            complete: function(){
+              console.log("complete")
+            },
+            success: function(result) {
+              $('vacForm').find('.formResult').html(result)
+              $('#results').html(result);
+              //console.log(result);
+            }
+          });
+        }
+        return false;
+      });
+          /*
+          var $this = $(this); // `this` refers to the current form element
+          
+          $.post('process.php',
+              $this.serialize(), // Serializes form data in standard format
+              function(data) { 
+                alert("4")
+                $('#results').html(data); 
+              });*/
+
+      $('input, textarea').on('blur', function(){
+        validateField($(this));
+      });
+
+      function validateField (field) {
+        if(field.val().length == 0){
+          field.parents('.control-group').addClass('error');
+          if(errors.indexOf(field.attr('name'))== -1) 
+            errors.push(field.attr('name'));
+        }
+        else{
+          field.parents('.control-group').removeClass('error');
+          if(errors.indexOf(field.attr('name')) != -1) 
+            errors.splice(errors.indexOf(field.attr('name')), 1);
+        }
+        //console.log(errors);
+      }
+      $('select').on('change', function(){
+        validateField($(this));
+      });
+    </script>
+
+    <!-- Calendar - DateRangePicker Popup -->
+    <script type="text/javascript">
+    // trigger vacations dates input
+     $(document).ready(function() {
+        $('#vacDates').daterangepicker();
+     });
+    //trigger calendar button
+    $('.cleandar-button').click(function(){ $('#vacDates').trigger('focus'); });
+    </script>
+
+   <!-- Reset Button -->
+    <script type="text/javascript">
+      $('.reset-button').click(function(){ document.getElementById("vacForm").reset(); 
+      errors= ["empName", "vacType", "vacDates", "vacDetails"] ;});
+    </script>
+
+    <script type="text/javascript" src="../assets/js/moment.js"></script>
+    <script type="text/javascript" src="../assets/js/daterangepicker.js"></script>
+
+  
+  </body>
+</html>
