@@ -63,14 +63,14 @@
 
       <!-- Google+ SignIn Button-->
       <!-- Replace the Client_ID if you change the API accssess-->
-     <span id="signinB utton">
+     <span id="signinButton">
 	  	<span
 	    class="g-signin"
 	    data-callback="signinCallback"
-	    data-clientid="236774995043-7t8a41ueito2j33n0qk7ib4bpev68dkc.apps.googleusercontent.com" 
+	    data-clientid="236774995043-pmg0hl2uksmevjcsfjlge8jfds576re3.apps.googleusercontent.com" 
 	    data-cookiepolicy="single_host_origin"
 	    data-requestvisibleactions="http://schemas.google.com/AddActivity"
-	    data-scope="https://www.googleapis.com/auth/plus.login">
+	    data-scope="https://www.googleapis.com/auth/calendar">
 	  	</span>
 	   </span>
     </div>
@@ -89,6 +89,8 @@
         // Successfully authorized
         // Hide the sign-in button now that the user is authorized, for example:
         document.getElementById('signinButton').setAttribute('style', 'display: none');
+        // ** rederict to form, 
+        window.location.replace("request.html");
       } else if (authResult['error']) {
         // There was an error.
         // Possible error codes:

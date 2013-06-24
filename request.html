@@ -169,9 +169,10 @@
             beforeSend:function(){
             },
             complete: function(){
-              console.log("complete")
+              //console.log("complete")
             },
             success: function(result) {
+              
               $('vacForm').find('.formResult').html(result)
               $('#results').html(result);
               //console.log(result);
